@@ -1,0 +1,5 @@
+#!/bin/bash
+if [ ! -f $HOME/.ssh/id_rsa ]; then
+    ssh-keygen  -t rsa -P "" -f $HOME/.ssh/id_rsa
+fi
+cat $HOME/.ssh/id_rsa.pub | ssh $1@$2 'cat >> .ssh/authorized_keys'
