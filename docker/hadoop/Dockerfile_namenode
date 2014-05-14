@@ -7,10 +7,11 @@ MAINTAINER stanley shi
 
 # make sure the package repository is up to date
 
-ADD supervisord.conf /etc/supervisord.conf
 ADD phd-centos_6.repo /etc/yum.repos.d/phd.repo
 
 RUN yum -y install supervisor
+ADD supervisord.conf /etc/supervisord.conf
+
 RUN yum -y install hadoop-hdfs-namenode
 
 EXPOSE 22
