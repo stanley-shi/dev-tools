@@ -10,7 +10,7 @@ MAINTAINER stanley shi
 RUN rpm -ivh https://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
 RUN yum -y install which coreutils python openssh-server wget ntp gzip tar openssh-clients
 RUN echo 'root:changeme' |chpasswd
-RUN yum -y install gcc gcc-c++
+RUN yum -y install gcc gcc-c++ cmake zlib-devel perl
 
 VOLUME /src
 VOLUME /data
@@ -58,11 +58,10 @@ RUN mv xerces-c_2_8_0-x86_64-linux-gcc_3_4 /opt
 
 # adding things to PATH
 RUN touch /root/.bash_profile
-RUN echo FINDBUGS_HOME=/opt/findbugs-2.0.3 >> /root/.bash_profile
-RUN echo ENV_FORREST_HOME=/opt/apache-forrest-0.9 >> /root/.bash_profile
-RUN echo MAVEN_HOME=/opt/apache-maven-3.2.1 >> /root/.bash_profile
-RUN echo XERCESC_HOME=/opt/xerces-c_2_8_0-x86_64-linux-gcc_3_4 >> /root/.bash_profile
-RUN echo FINDBUGS_HOME=/opt/findbugs-2.0.3 >> /root/.bash_profile
+RUN echo export ENV_FORREST_HOME=/opt/apache-forrest-0.9 >> /root/.bash_profile
+RUN echo export MAVEN_HOME=/opt/apache-maven-3.2.1 >> /root/.bash_profile
+RUN echo export XERCESC_HOME=/opt/xerces-c_2_8_0-x86_64-linux-gcc_3_4 >> /root/.bash_profile
+RUN echo export FINDBUGS_HOME=/opt/findbugs-2.0.3 >> /root/.bash_profile
 RUN echo export PATH=\$MAVEN_HOME/bin/:\$PATH >> /root/.bash_profile
 
 WORKDIR /src
