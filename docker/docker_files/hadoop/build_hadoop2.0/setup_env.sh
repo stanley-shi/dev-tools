@@ -52,10 +52,11 @@ mv xerces-c_2_8_0-x86_64-linux-gcc_3_4 /opt
 rm -rf /tmp/*
 
 # adding things to PATH
-touch /root/.bash_profile
-echo export ENV_FORREST_HOME=/opt/apache-forrest-0.9 >> /root/.bash_profile
-echo export MAVEN_HOME=/opt/apache-maven-3.2.1 >> /root/.bash_profile
-echo export XERCESC_HOME=/opt/xerces-c_2_8_0-x86_64-linux-gcc_3_4 >> /root/.bash_profile
-echo export FINDBUGS_HOME=/opt/findbugs-2.0.3 >> /root/.bash_profile
-echo export PATH=\$MAVEN_HOME/bin/:\$FINDBUGS_HOME/bin/:\$PATH >> /root/.bash_profile
+#touch /root/.bash_profile
+#echo export ENV_FORREST_HOME=/opt/apache-forrest-0.9 >> /root/.bash_profile
+#echo export MAVEN_HOME=/opt/apache-maven-3.2.1 >> /root/.bash_profile
+#echo export XERCESC_HOME=/opt/xerces-c_2_8_0-x86_64-linux-gcc_3_4 >> /root/.bash_profile
+#echo export FINDBUGS_HOME=/opt/findbugs-2.0.3 >> /root/.bash_profile
+#echo export JAVA_HOME=/etc/alternatives/java_sdk_openjdk >> /root/.bash_profile
+#echo export PATH=\$MAVEN_HOME/bin/:\$FINDBUGS_HOME/bin/:\$PATH >> /root/.bash_profile
 
