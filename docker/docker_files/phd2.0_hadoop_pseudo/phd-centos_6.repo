@@ -1,0 +1,5 @@
+[phd]
+name=PHD-2.0
+baseurl=http://hdsh2-a255.lss.emc.com/phd-release/redhat/6/x86_64/phd/2.0.0/
+gpgcheck=0
+

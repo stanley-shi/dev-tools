@@ -1,0 +1,20 @@
+# A base centos image with only openssh-server installed and started
+#
+# VERSION               0.0.1
+
+FROM     hdsh196.lss.emc.com:5000/stanley:base
+MAINTAINER stanley shi
+
+# make sure the package repository is up to date
+
+ADD phd-centos_6.repo /etc/yum.repos.d/phd.repo
+RUM rpm -ivh https://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
+
+RUN yum -y install supervisor
+ADD supervisord.conf /etc/supervisord.conf
+
+RUN yum -y install hadoop-hdfs-namenode
+
+EXPOSE 22
+CMD ["/usr/bin/supervisord"]
+
