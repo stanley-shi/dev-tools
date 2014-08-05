@@ -1,11 +1,12 @@
 #!/bin/sh
+ROOT_DIR=/phd
 PCC_TAR=http://hdp4-mdw1.wbe.dh.greenplum.com/dist/PHD/latest/PCC-2.3.0-427.x86_64.tar.gz
 PHD_TAR=http://hdp4-mdw1.wbe.dh.greenplum.com/dist/PHD/latest/PHD-2.1.0.0-175.tar.gz
 JDK_RPM=http://hdsh2-a255.lss.emc.com/phd-common/jdk-7u45-linux-x64.rpm
 
 
-mkdir -p /phd
-cd /phd
+mkdir -p $ROOT_DIR
+cd $ROOT_DIR
 wget $PCC_TAR
 wget $PHD_TAR
 wget $JDK_RPM
@@ -34,14 +35,14 @@ for host in vm2 vm3 vm4 vm5; do
     ssh $host alternatives --install "/usr/bin/java" java /usr/java/jdk1.7.0_45/bin/java 1
     ssh $host alternatives --set "java" /usr/java/jdk1.7.0_45/bin/java
 done
-cd $PCC_FOLDER
+cd $ROOT_DIR/$PCC_FOLDER
 yes | ./install
 
 ## setup KDC server
 echo "This step requires manual intervention!!!"
 icm_client security -i
 
-cd ..
+cd $ROOT_DIR/
 sudo -u gpadmin icm_client import -s $PHD_FOLDER
 
 sudo -u gpadmin icm_client fetch-template -o /home/gpadmin/conf
