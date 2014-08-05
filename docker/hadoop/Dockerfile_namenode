@@ -9,11 +9,13 @@ MAINTAINER stanley shi
 
 ADD phd-centos_6.repo /etc/yum.repos.d/phd.repo
 RUN rpm -ivh https://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
+RUN rpm -ivh http://hdsh020.lss.emc.com/tools/programming/jdk-7u51-linux-x64.rpm
 
 RUN yum -y install supervisor
 ADD supervisord.conf /etc/supervisord.conf
 
 RUN yum -y install hadoop-hdfs-namenode
+VOLUME  ["/etc/gphd/", "/var/log/gphd/", "/data/"]
 
 EXPOSE 22
 CMD ["/usr/bin/supervisord"]
