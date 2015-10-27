@@ -2,4 +2,5 @@
 if [ ! -f $HOME/.ssh/id_rsa ]; then
     ssh-keygen  -t rsa -P "" -f $HOME/.ssh/id_rsa
 fi
-cat $HOME/.ssh/id_rsa.pub | ssh $1@$2 'cat >> .ssh/authorized_keys'
+#cat $HOME/.ssh/id_rsa.pub | ssh $1@$2 'cat >> .ssh/authorized_keys'
+cat $HOME/.ssh/id_rsa.pub | ssh $1@$2 'mkdir -m 700 -p .ssh; touch .ssh/authorized_keys; chmod 644 .ssh/authorized_keys; cat >> .ssh/authorized_keys'
